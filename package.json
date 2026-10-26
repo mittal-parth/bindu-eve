@@ -15,6 +15,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@agent-browser/eve": "^0.39.4",
     "@vercel/connect": "2.5.2",
     "ai": "^7.0.137",
     "eve": "^0.83.2",
@@ -22,10 +23,10 @@
   },
   "devDependencies": {
     "@types/node": "24.x",
+    "just-bash": "^3.6.0",
     "typescript": "7.0.2"
   },
   "engines": {
     "node": "24.x"
   }
-
 }
