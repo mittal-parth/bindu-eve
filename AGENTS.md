@@ -53,3 +53,9 @@ A setup may report `eve link` as a prerequisite; run it, then retry the continua
 ## Validate the change
 
 Run the validation the task requests. When it does not establish the behavior you changed, run the narrowest relevant check.
+
+## Evals
+
+- Add evals whenever we are adding new capabilities, integrations, connections, connectors etc.
+- Run them with `npm run eval`
+- This is important to avoid regressions while improving our agent.

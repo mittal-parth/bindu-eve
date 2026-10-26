@@ -1,35 +1,49 @@
-# bindu-eve
+# Bindu
 
-This is an [eve](https://eve.dev) agent bootstrapped with [`eve init`](https://eve.dev/docs/reference/cli#eve-init).
+An open source personal assistant like Grok Bot / Muse / OpenAI Dots.
 
-## Getting started
+It is currently a work in progress.
 
-First, run the development server:
+Built using [Vercel eve](https://eve.dev).
 
-```bash
-eve dev
-```
+## Features
 
-The development TUI opens an interactive session where you can send messages to your agent.
+- [x] Be able to chat with an LLM.
+- [x] File based agent memory
+- [x] Full browser access with the ability to click around, take screenshots, record, fill forms, browse the internet, etc.
+- [x] Sandbox execution. Vercel Sandbox in production and just-bash during local dev
+- [x] Evals for anything added. Evolving as we go.
+- [ ] User-defined schedules
+- [ ] Skills. Some custom skills might be needed which are perhaps not being done well by the agent by default. User-defined skills dynamically created with usage.
+- [ ] Subagents
+- [ ] Connections to popular apps. Whether this is done with Composio or one by one, will be decided.
+- [ ] Processing of webhook events from connected apps to add proactivity 
+- [ ] Configurable persona of the agent / bot per user.
+- [ ] Chat based UI. 
+- [ ] Multiple bots per user.
+- [ ] Authenticated users.
+- [ ] 1-2 non web based channel like Discord, iMessage. Adding another surface is more of an operational overhead.
 
-Start by editing `agent/instructions.md` to define the agent's identity, purpose, tone, and response guidelines. Configure its model and runtime behavior in `agent/agent.ts`.
 
-Add capabilities under `agent/`, including tools, connections, channels, skills, subagents, and schedules. eve reloads your changes as you work.
+## Scripts
 
-## Learn more
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Chat with the agent in the terminal. |
+| `npm run eval` | Run evals. `npx eve eval capabilities` or `npx eve eval memory` runs one. |
+| `npm run typecheck` | Typecheck the agent and evals. |
+| `npm run build` | Build for production. |
+| `npm run start` | Run a production build locally. |
+| `npm run deploy` | Link a Vercel project if needed, then deploy. |
 
-To learn more about eve, explore these resources:
+## Environment
 
-- [eve documentation](https://eve.dev/docs) — learn about eve's features and authoring APIs.
-- [Build an Agent tutorial](https://eve.dev/docs/tutorial/first-agent) — build and deploy an agent step by step.
-- [eve on GitHub](https://github.com/vercel/eve) — view the source and contribute.
+Local chat can use an Anthropic key saved with `/login` inside `eve dev`. Deployments need `ANTHROPIC_API_KEY`.
 
-## Deploy on Vercel
+Before the first production build or deploy, link the app with `eve link`. Before relying on memory in production, run `eve integration setup file-memory`. That connects a Blob store. [Blob pricing](https://vercel.com/pricing) includes 1 GB, 10,000 reads, and 2,000 writes a month on Hobby. One memory document is at most 64 KB.
 
-Deploy your agent to [Vercel](https://vercel.com) from the project root:
+`memory/recall` calls the model, so it needs the same Anthropic credential as chat. `capabilities` does not.
 
-```bash
-eve deploy
-```
+----
 
-`eve deploy` links a Vercel project if needed and deploys the agent to production. See the [eve deployment documentation](https://eve.dev/docs/guides/deployment/vercel) for authentication, environment variables, and deployment options.
+PS: guess why its called bindu :)
