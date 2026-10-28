@@ -13,7 +13,7 @@ Built using [Vercel eve](https://eve.dev).
 - [x] Full browser access with the ability to click around, take screenshots, record, fill forms, browse the internet, etc.
 - [x] Sandbox execution. Vercel Sandbox in production and just-bash during local dev
 - [x] Evals for anything added. Evolving as we go.
-- [ ] User-defined schedules
+- [ ] User-defined schedules. Might come later as [Dynamic Schedules](https://eve.dev/docs/experimental/dynamic-schedules) are experimental and feature flag gated.
 - [ ] Skills. Some custom skills might be needed which are perhaps not being done well by the agent by default. User-defined skills dynamically created with usage.
 - [ ] Subagents
 - [ ] Connections to popular apps. Whether this is done with Composio or one by one, will be decided.
