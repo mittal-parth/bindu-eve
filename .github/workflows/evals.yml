@@ -1,0 +1,42 @@
+name: Evals
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fast:
+    name: Fast evals
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run fast evals
+        run: npm run eval -- --tag fast --strict --junit .eve/junit.xml
+
+      - name: Upload eval results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: |
+            .eve/junit.xml
+            .eve/evals/
+          if-no-files-found: ignore
