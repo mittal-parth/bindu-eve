@@ -22,7 +22,7 @@ Built using [Vercel eve](https://eve.dev).
 - [ ] Chat based UI. 
 - [ ] Multiple bots per user.
 - [ ] Authenticated users.
-- [ ] 1-2 non web based channel like Discord, iMessage. Adding another surface is more of an operational overhead.
+- [ ] 1-2 non web based channel like Discord, iMessage. Adding another surface is more of an operational overhead. Discord setup, message flow, and FAQs are in [docs/discord.md](docs/discord.md).
 
 
 ## Scripts
