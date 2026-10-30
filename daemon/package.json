@@ -3,6 +3,6 @@
   "type": "module",
   "dependencies": {
     "@vercel/connect": "2.5.6",
-    "eve": "^0.83.2"
+    "eve": "^0.91.0"
   }
 }

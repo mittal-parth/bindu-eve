@@ -15,14 +15,18 @@ Built using [Vercel eve](https://eve.dev).
 - [x] Evals for anything added. Evolving as we go.
 - [ ] User-defined schedules. Might come later as [Dynamic Schedules](https://eve.dev/docs/experimental/dynamic-schedules) are experimental and feature flag gated.
 - [ ] Skills. Some custom skills might be needed which are perhaps not being done well by the agent by default. User-defined skills dynamically created with usage.
-- [ ] Subagents
-- [ ] Connections to popular apps. Whether this is done with Composio or one by one, will be decided.
+- [x] Subagents
+- [ ] Connections to popular apps
+    - [ ] GitHub
+    - [ ] TickTick
+    - [ ] 
 - [ ] Processing of webhook events from connected apps to add proactivity 
 - [ ] Configurable persona of the agent / bot per user.
-- [ ] Chat based UI. 
+- [x] Web chat based UI. 
+- [ ] Persistent chats / bots with Supabase Auth. Each user should only see their bots / chats.
 - [ ] Multiple bots per user.
 - [ ] Authenticated users.
-- [ ] 1-2 non web based channel like Discord, iMessage. Adding another surface is more of an operational overhead. Discord setup, message flow, and FAQs are in [docs/discord.md](docs/discord.md).
+- [x] 1-2 non web based channel like [Discord](docs/discord.md), iMessage (not done yet). Adding more is more of an operational overhead.
 
 
 ## Scripts
