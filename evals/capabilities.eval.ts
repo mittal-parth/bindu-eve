@@ -1,7 +1,7 @@
 import { defineEval } from "eve/evals";
 import { equals, satisfies } from "eve/evals/expect";
 
-const browserTools = ["browser__navigate", "browser__click", "browser__screenshot"] as const;
+const browserTools = ["browser__open", "browser__click", "browser__screenshot"] as const;
 const additionalTools = ["ask_question", "grep"] as const;
 const discordRoutes = [
   { method: "POST", urlPath: "/eve/v1/discord" },

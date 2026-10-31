@@ -13,6 +13,6 @@ export default defineEval({
 
     const recalled = await t.send("What is my favorite tea? Reply with the tea name only.");
     recalled.succeeded();
-    t.check(recalled.message, includes(/gyokuro/i));
+    t.check(recalled.reply, includes(/gyokuro/i));
   },
 });
