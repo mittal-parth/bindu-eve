@@ -50,6 +50,10 @@ eve deploy --non-interactive --yes [--project <name-or-id>]
 
 A setup may report `eve link` as a prerequisite; run it, then retry the continuation. When a completed setup event has `deploymentRequired: true`, run the `next` command it reports.
 
+## Keep related code together
+
+Do not add a new file for one or two functions. Put them in the module that already owns that behavior. Add a file only when the code is a separate unit you would open on its own, such as a tool, a channel, or a module large enough that mixing it in would hide the existing code.
+
 ## Validate the change
 
 Run the validation the task requests. When it does not establish the behavior you changed, run the narrowest relevant check.

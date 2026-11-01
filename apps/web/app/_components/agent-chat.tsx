@@ -32,6 +32,8 @@ import { Button } from "@/components/ui/button";
 import { Trace, TraceIcon, TraceLine, TraceTitle } from "@/components/ui/trace";
 import { cn } from "@/lib/utils";
 import { AgentMessage } from "./agent-message";
+import { SignOutButton } from "./sign-out-button";
+import { createBrowserSupabase } from "@/lib/supabase-browser";
 import { WEB_CHAT_AGENT } from "@/app/eve-agent";
 
 const DEFAULT_AGENT_NAME = "eve-agent";
@@ -60,6 +62,16 @@ export function AgentChat({
   };
   const agent = useEveAgent({
     agent: WEB_CHAT_AGENT,
+    auth: {
+      bearer: async () => {
+        const { data, error } = await createBrowserSupabase().auth.getSession();
+        const token = data.session?.access_token;
+        if (error || token === undefined) {
+          throw new Error("Sign in to continue.");
+        }
+        return token;
+      },
+    },
     prewarm: hasInputText,
     initialSession:
       sessionId === undefined
@@ -169,9 +181,10 @@ export function AgentChat({
 
   return (
     <main className="flex h-dvh flex-col overflow-hidden bg-background text-foreground">
-      {showConversationLayout ? (
-        <ChatHeader canStartNewChat={activeSessionId !== undefined} />
-      ) : null}
+      <ChatHeader
+        canStartNewChat={activeSessionId !== undefined}
+        showTitle={showConversationLayout}
+      />
 
       {showConversationLayout ? (
         <Conversation
@@ -282,25 +295,34 @@ function ErrorMessage({ message }: { readonly message: string }) {
   );
 }
 
-function ChatHeader({ canStartNewChat }: { readonly canStartNewChat: boolean }) {
+function ChatHeader({
+  canStartNewChat,
+  showTitle,
+}: {
+  readonly canStartNewChat: boolean;
+  readonly showTitle: boolean;
+}) {
   return (
     <header className="pointer-events-none fixed top-0 right-0 left-0 z-20 h-14">
-      <div className="relative mx-auto flex h-full w-full max-w-3xl items-center justify-center bg-background px-24">
-        <span className="truncate text-muted-foreground text-sm">{AGENT_NAME}</span>
-        {canStartNewChat ? (
-          <Button
-            aria-label="Start a new chat"
-            className="pointer-events-auto fixed top-3 right-6 pr-4"
-            onClick={() => window.location.assign("/s")}
-            size="sm"
-            type="button"
-            variant="ghost"
-          >
-            <PlusIcon className="size-4" />
-            <span className="hidden font-normal text-sm sm:inline">New chat</span>
-          </Button>
-        ) : null}
-      </div>
+      <SignOutButton />
+      {showTitle ? (
+        <div className="relative mx-auto flex h-full w-full max-w-3xl items-center justify-center bg-background px-24">
+          <span className="truncate text-muted-foreground text-sm">{AGENT_NAME}</span>
+          {canStartNewChat ? (
+            <Button
+              aria-label="Start a new chat"
+              className="pointer-events-auto fixed top-3 right-6 pr-4"
+              onClick={() => window.location.assign("/s")}
+              size="sm"
+              type="button"
+              variant="ghost"
+            >
+              <PlusIcon className="size-4" />
+              <span className="hidden font-normal text-sm sm:inline">New chat</span>
+            </Button>
+          ) : null}
+        </div>
+      ) : null}
     </header>
   );
 }

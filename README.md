@@ -25,7 +25,7 @@ Built using [Vercel eve](https://eve.dev).
 - [x] Web chat based UI. 
 - [ ] Persistent chats / bots with Supabase Auth. Each user should only see their bots / chats.
 - [ ] Multiple bots per user.
-- [ ] Authenticated users.
+- [x] Authenticated users.
 - [x] 1-2 non web based channel like [Discord](docs/discord.md), iMessage (not done yet). Adding more is more of an operational overhead.
 
 
