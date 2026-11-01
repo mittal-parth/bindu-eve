@@ -16,7 +16,8 @@
     "dev:web": "next dev apps/web",
     "build:web": "next build apps/web",
     "dev:eve": "eve dev",
-    "dev:all": "vercel dev --local"
+    "dev:all": "vercel dev --local",
+    "test": "vitest run"
   },
   "dependencies": {
     "@agent-browser/eve": "^0.41.0",
@@ -28,6 +29,8 @@
     "@streamdown/code": "^1.1.1",
     "@streamdown/math": "^1.0.2",
     "@streamdown/mermaid": "^1.0.2",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.118.0",
     "@tailwindcss/postcss": "^4.3.0",
     "@vercel/connect": "^2.5.6",
     "ai": "^7.0.137",
@@ -53,7 +56,8 @@
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "just-bash": "^3.6.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5"
   },
   "engines": {
     "node": "24.x"
