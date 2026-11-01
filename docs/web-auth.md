@@ -67,3 +67,5 @@ Use `npm run dev:all`, then open the URL it prints.
 Until the env vars exist, `/` redirects to `/login?error=config` and the button says Supabase is not configured.
 
 If the browser shows **431** right after Google returns, the old session cookie is still too large. Clear cookies for the site and sign in again. The app stores only the access and refresh tokens in the cookie.
+
+`npm test` runs the session, callback, and agent token checks.

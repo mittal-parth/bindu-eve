@@ -16,7 +16,8 @@
     "dev:web": "next dev apps/web",
     "build:web": "next build apps/web",
     "dev:eve": "eve dev",
-    "dev:all": "vercel dev --local"
+    "dev:all": "vercel dev --local",
+    "test": "vitest run"
   },
   "dependencies": {
     "@agent-browser/eve": "^0.41.0",
@@ -55,7 +56,8 @@
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "just-bash": "^3.6.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5"
   },
   "engines": {
     "node": "24.x"

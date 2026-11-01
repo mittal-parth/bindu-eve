@@ -7,7 +7,16 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@/*": ["./apps/web/*"]
+    }
   },
-  "include": ["agent/**/*.ts", "daemon/**/*.ts", "evals/**/*.ts"]
+  "include": [
+    "agent/**/*.ts",
+    "daemon/**/*.ts",
+    "evals/**/*.ts",
+    "tests/**/*.ts",
+    "vitest.config.ts"
+  ]
 }
