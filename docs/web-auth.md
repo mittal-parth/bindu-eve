@@ -1,6 +1,6 @@
 # Web sign-in
 
-The web chat requires a Google account. Discord and `eve dev` do not. A `/s/:sessionId` link still opens for any signed-in person. Chats are not owned by a user yet.
+The web chat requires a signed-in account. Production uses Google. Local development also shows an email and password form. Discord and `eve dev` do not ask for a session. A `/s/:sessionId` link still opens for any signed-in person. Chats are not owned by a user yet.
 
 ## How a sign-in travels
 
@@ -52,12 +52,18 @@ The Next.js app stores the session in cookies, using `@supabase/ssr`. The server
      The Next.js app and the eve agent both read these. Do not commit the file.
 6. Restart `npm run dev:all` after saving the env file.
 
+## Development sign-in
+
+When `NODE_ENV` is `development`, `/login` shows an email and password form under **Development only**. Production builds omit it. The app does not read `BINDU_DEV_EMAIL` or `BINDU_DEV_PASS`. Those stay in `.env.local` so a person or an agent can type them into the form. Do not add them to the production Vercel environment.
+
+In the Supabase project, enable **Authentication**, then **Sign In / Providers**, then **Email**, and create the test user once. Agents should follow the sign-in steps in `AGENTS.md` when they need a session.
+
 ## Test it locally
 
 Use `npm run dev:all`, then open the URL it prints.
 
 1. `/` should send you to `/login`.
-2. Choose **Continue with Google** and finish the Google screen.
+2. Choose **Continue with Google** and finish the Google screen. In development, you can instead fill the **Development only** email and password form and choose **Sign in**.
 3. You should land back on the chat. Send a message.
 4. Reload the `/s/:sessionId` URL. The same conversation should resume.
 5. Choose **Sign out**. `/` should send you to `/login` again.

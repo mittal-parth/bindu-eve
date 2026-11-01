@@ -1,3 +1,4 @@
+import { DevSignIn } from "./dev-sign-in";
 import { GoogleSignIn } from "./google-sign-in";
 
 export default async function LoginPage({
@@ -20,6 +21,7 @@ export default async function LoginPage({
         <p className="text-muted-foreground text-sm">Sign in to chat.</p>
       </div>
       <GoogleSignIn />
+      {process.env.NODE_ENV === "development" ? <DevSignIn /> : null}
       {message ? <p className="max-w-xs text-center text-destructive text-sm">{message}</p> : null}
     </main>
   );

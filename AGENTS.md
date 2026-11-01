@@ -63,3 +63,19 @@ Run the validation the task requests. When it does not establish the behavior yo
 - Add evals whenever we are adding new capabilities, integrations, connections, connectors etc.
 - Run them with `npm run eval`
 - This is important to avoid regressions while improving our agent.
+
+## Dev sign-in
+
+The website requires a signed-in session. Production uses Google. In development, `/login` also shows an email and password form under **Development only** (`NODE_ENV === "development"`). Production builds omit that form.
+
+`BINDU_DEV_EMAIL` and `BINDU_DEV_PASS` live in `.env.local` for this workflow. The app does not read them. Do not print the password, do not commit `.env.local`, and do not add these variables to the production Vercel environment.
+
+When a change needs a signed-in browser session:
+
+1. Start the app with `npm run dev:all` and open the URL it prints. Locally that is `http://localhost:3000`.
+2. Read `BINDU_DEV_EMAIL` and `BINDU_DEV_PASS` from `.env.local`.
+3. Open `/login`.
+4. Fill the **Development only** email and password fields and submit.
+5. You land on `/` with a session. **Sign out** returns you to `/login`.
+
+The Supabase project needs the Email provider enabled, and a user that matches those credentials, before the form can succeed. See `docs/web-auth.md`.
