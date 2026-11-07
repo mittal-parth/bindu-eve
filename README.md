@@ -1,10 +1,9 @@
 # Bindu
 
-An open source personal assistant like Grok Bot / Muse / OpenAI Dots.
+An open source personal assistant like Grok Bot / Muse / OpenAI Dots. Built using [Vercel eve](https://eve.dev).
 
-It is currently a work in progress.
+UPDATE: Not being worked upon now with the vercel primitive due to limiations with the serverless architecture. Work is now being continued in [a new repo](https://github.com/mittal-parth/companion)
 
-Built using [Vercel eve](https://eve.dev).
 
 ## Features
 
