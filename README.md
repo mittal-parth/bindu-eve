@@ -2,7 +2,7 @@
 
 An open source personal assistant like Grok Bot / Muse / OpenAI Dots. Built using [Vercel eve](https://eve.dev).
 
-UPDATE: Not being worked upon now with the vercel primitive due to limiations with the serverless architecture. Work is now being continued in [a new repo](https://github.com/mittal-parth/companion)
+_**UPDATE: Not being worked upon now with the vercel primitive due to limiations with the serverless architecture. Work is now being continued in [a new repo](https://github.com/mittal-parth/companion)**_
 
 
 ## Features
